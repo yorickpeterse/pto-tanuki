@@ -10,6 +10,7 @@ todos:
   before_script:
     - ruby --version
     - gem --version
+    - gem install bundler
     - bundle --version
     - bundle install --path vendor --retry=3
   script:
