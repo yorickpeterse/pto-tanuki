@@ -1,0 +1,21 @@
+---
+
+todos:
+  image: ruby:2.6
+  only:
+    refs:
+      - schedules
+    variables:
+      - GITLAB_TOKEN
+  before_script:
+    - ruby --version
+    - gem --version
+    - bundle --version
+    - bundle install --path vendor --retry=3
+  script:
+    - bundle exec ./bin/pto-tanuki
+  cache:
+    key: todos
+    paths:
+      - mentioned.json
+      - vendor/ruby

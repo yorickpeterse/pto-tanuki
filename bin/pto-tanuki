@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require_relative '../lib/pto_tanuki'
+
+groups = ENV.fetch('GROUPS').split(',')
+gitlab = Gitlab::Client.new(
+  endpoint: 'https://gitlab.com/api/v4',
+  private_token: ENV.fetch('GITLAB_TOKEN')
+)
+
+PtoTanuki::TodosProcessor.new(gitlab, groups).process
