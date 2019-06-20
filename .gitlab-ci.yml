@@ -6,7 +6,7 @@ todos:
     refs:
       - schedules
     variables:
-      - GITLAB_TOKEN
+      - $GITLAB_TOKEN
   before_script:
     - ruby --version
     - gem --version
