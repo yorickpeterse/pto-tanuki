@@ -17,8 +17,12 @@ module PtoTanuki
       retrieve_status
     end
 
+    def pto_status_set?
+      @start_date && @end_date
+    end
+
     def out_of_office?
-      return false unless @start_date && @end_date
+      return false unless pto_status_set?
 
       (@start_date..@end_date).cover?(Date.today)
     end

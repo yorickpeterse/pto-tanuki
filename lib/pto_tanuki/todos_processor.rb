@@ -12,8 +12,12 @@ module PtoTanuki
     def process
       schedule = Schedule.new(@gitlab)
 
+      warn("Status doesn't match pto-tanuki format") unless schedule.pto_status_set?
+
       if schedule.out_of_office?
         process_group_todos(Notifier.new(@gitlab, schedule))
+      else
+        warn("Not OOO today")
       end
     end
 
