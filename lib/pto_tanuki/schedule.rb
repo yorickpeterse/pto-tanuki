@@ -26,11 +26,11 @@ module PtoTanuki
     def retrieve_status
       status = @gitlab.get('/user/status')
 
-      return unless status
+      return if status&.message.nil?
 
       matches = status.message.match(STATUS_PATTERN)
 
-      return unless matches[:start] && matches[:stop]
+      return if matches.nil? || !matches[:start] || !matches[:stop]
 
       @start_date = Date.strptime(matches[:start], DATE_FORMAT)
       @end_date = Date.strptime(matches[:stop], DATE_FORMAT)
