@@ -49,11 +49,6 @@ module PtoTanuki
       case todo.action_name
       when 'assigned', 'directly_addressed'
         true
-      when 'mentioned'
-        username = "@#{@current_user.username}"
-
-        todo.body.include?(username) ||
-          todo.target.description.include?(username)
       else
         false
       end
