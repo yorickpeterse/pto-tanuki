@@ -7,7 +7,7 @@ before_script:
   - bundle --version
   - bundle install --path vendor --retry=3
 
-todos:
+lint:
   image: ruby:2.6
   except:
     - schedules
