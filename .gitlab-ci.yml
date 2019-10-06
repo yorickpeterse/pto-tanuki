@@ -11,7 +11,7 @@ lint:
   image: ruby:2.6
   except:
     - schedules
-  sciprt:
+  script:
     - bundle exec rubocop .
   cache:
     paths:
