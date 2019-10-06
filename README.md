@@ -2,8 +2,8 @@
 
 PTO Tanuki is a simple Ruby program for cutting down the amount of TODO noise
 whenever you are out of office. When enabled, it will mark TODOs for certain
-groups as done, and inform others you are not available whenever they mention
-you.
+groups as done, ensuring you don't come back from vacation with hundreds of no
+longer relevant TODOs.
 
 ## Usage
 

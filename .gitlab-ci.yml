@@ -1,5 +1,22 @@
 ---
 
+before_script:
+  - ruby --version
+  - gem --version
+  - gem install bundler
+  - bundle --version
+  - bundle install --path vendor --retry=3
+
+todos:
+  image: ruby:2.6
+  except:
+    - schedules
+  sciprt:
+    - bundle exec rubocop .
+  cache:
+    paths:
+      - vendor/ruby
+
 todos:
   image: ruby:2.6
   only:
@@ -7,16 +24,8 @@ todos:
       - schedules
     variables:
       - $GITLAB_TOKEN
-  before_script:
-    - ruby --version
-    - gem --version
-    - gem install bundler
-    - bundle --version
-    - bundle install --path vendor --retry=3
   script:
     - bundle exec ./bin/pto-tanuki
   cache:
-    key: todos
     paths:
-      - mentioned.json
       - vendor/ruby

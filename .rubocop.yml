@@ -2,7 +2,7 @@
 AllCops:
   TargetRubyVersion: 2.6
 
-Documentation:
+Style/Documentation:
   Enabled: false
 
 Metrics/MethodLength:
@@ -16,12 +16,6 @@ Metrics/AbcSize:
 
 Metrics/ParameterLists:
   Max: 10
-
-RSpec/MultipleExpectations:
-  Max: 5
-
-RSpec/ExampleLength:
-  Max: 20
 
 Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
