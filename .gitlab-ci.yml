@@ -5,7 +5,8 @@ before_script:
   - gem --version
   - gem install bundler
   - bundle --version
-  - bundle install --path vendor --retry=3
+  - bundle config set path vendor
+  - bundle install --retry=3
 
 lint:
   image: ruby:2.6
