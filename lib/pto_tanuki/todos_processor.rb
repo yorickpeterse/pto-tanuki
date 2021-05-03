@@ -23,16 +23,12 @@ module PtoTanuki
     end
 
     def process_group_todos
-      group_ids.each do |group_id|
-        @gitlab.todos(group_id: group_id).auto_paginate do |todo|
-          @gitlab.mark_todo_as_done(todo.id)
-        end
-      end
-    end
+      @gitlab.todos.auto_paginate do |todo|
+        path = todo.project.path_with_namespace
 
-    def group_ids
-      @group_names.map do |name|
-        @gitlab.group(name).id
+        next unless @group_names.any? { |name| path.start_with?("#{name}/") }
+
+        @gitlab.mark_todo_as_done(todo.id)
       end
     end
   end
